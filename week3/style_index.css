@@ -42,6 +42,14 @@ section{
 }
 
 a{
-    text-decoration:dashed;
+    text-decoration:none;
 
+}
+
+footer{
+    text-align: center;
+}
+
+span{
+    font-size: 50px;
 }
