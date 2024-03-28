@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+#container{
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+header{
+    width: 90%;
+    border: 0.2rem solid  black;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+img{
+    width: 20vw;
+    height: 20vw;
+}
+
