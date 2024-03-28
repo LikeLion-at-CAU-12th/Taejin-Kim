@@ -53,17 +53,18 @@ main{
     flex-direction: row;
     margin-top: 2vw;
     justify-content: space-evenly;
+    width: 90%;
 }
 
 aside{
     font-family: "Nanum Brush Script", cursive;
     font-weight: bold;
     width: 15%;
-    height: 50vw;
+    height: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    font-size: 1.5vw;
+    font-size: 1.8vw;
 }
 
 #language{
@@ -87,7 +88,7 @@ section{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-size: 1.2vw;
+    font-size: 1.4vw;
 }
 
 .img_text{
@@ -101,3 +102,56 @@ img{
     border: 0.18vw solid black;
 }
 
+@media all and (max-width: 1200px) {
+    main {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    aside{
+        margin-top:2vw;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 15vw;
+        font-size: 2vw;
+    }
+
+    #aside1{
+        display: flex;
+        flex-direction: row;
+        margin-left:3vw;
+    }
+
+    #language{
+        margin-left:3vw;
+    }
+
+    #lang1{
+        display: flex;
+        flex-direction: row;
+    }
+
+    #lang2{
+        display: flex;
+        flex-direction: row;
+    }
+
+    article{
+        width: 100%;
+    }
+
+    .section_photo{
+        font-size: 1.7vw;
+    }
+
+
+    img{
+        width: 25vw;
+        height: 25vw; 
+    }
+
+    .langlang{
+        margin-right: 3vw;
+    }
+}
