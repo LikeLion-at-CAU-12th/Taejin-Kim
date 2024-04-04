@@ -14,6 +14,8 @@ const gameResult = document.getElementById("display-result"); // 게임결과 �
 const myScore = document.getElementById("my-score"); // 내 점수 표시 위함
 const comScore = document.getElementById("com-score"); // 컴퓨터 점수 표시 위함
 
+const reset = document.getElementById("reset-button");
+
 var myGameScore = 0; // 전역변수 내 점수 선언
 var comGameScore = 0; // 전역변수 컴퓨터 점수 선언
 
@@ -22,8 +24,21 @@ var comGameScore = 0; // 전역변수 컴퓨터 점수 선언
 rockBtn.addEventListener("click", displayMyChoice);
 scissorsBtn.addEventListener("click", displayMyChoice);
 papaerBtn.addEventListener("click", displayMyChoice);
+reset.addEventListener("click", allReset);
+
 
 //3. 함수
+function allReset() {
+    myScore.innerText = null;
+    comScore.innerText = null;
+    myHandText.innerText = null;
+    myHandIcon.className = null;
+    computerText.innerText = null;
+    computerIcon.className = null;
+    gameResult.innerText = null;
+}
+
+
 
 function displayMyChoice(e) {
     let clickedBtn = e.currentTarget.id; //rock, scissors, paper // 
