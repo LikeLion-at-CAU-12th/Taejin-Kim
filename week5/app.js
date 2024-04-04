@@ -2,10 +2,8 @@
 
 const myHandText = document.getElementById("my-hand-text");
 const myHandIcon = document.getElementById("my-hand-icon");
-
 const computerText = document.getElementById("computer-hand-text");
 const computerIcon = document.getElementById("computer-hand-icon");
-
 const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const papaerBtn = document.getElementById("paper");
@@ -14,17 +12,26 @@ const gameResult = document.getElementById("display-result"); // 게임결과 �
 const myScore = document.getElementById("my-score"); // 내 점수 표시 위함
 const comScore = document.getElementById("com-score"); // 컴퓨터 점수 표시 위함
 
-const reset = document.getElementById("reset-button");
+const reset = document.getElementById("reset-button"); // 리셋
 
 var myGameScore = 0; // 전역변수 내 점수 선언
 var comGameScore = 0; // 전역변수 컴퓨터 점수 선언
+
+const backColor = document.getElementById("body"); // 배경바꾸기 위함
+const changeMode = document.getElementById("darkMode"); // darkmode 버튼
+const lineContents = document.getElementById("contents-wrapper"); // 라인 색 바꾸기 위함
+const lineTitle1 = document.getElementById("display-title1"); // 라인 색 바꾸기 위함
+const lineTitle2 = document.getElementById("display-title2");
 
 //2. 선언한 dom 요소에 이벤트 생성
 
 rockBtn.addEventListener("click", displayMyChoice);
 scissorsBtn.addEventListener("click", displayMyChoice);
 papaerBtn.addEventListener("click", displayMyChoice);
+
 reset.addEventListener("click", allReset);
+
+changeMode.addEventListener("click", chooseMode);
 
 
 //3. 함수
@@ -37,6 +44,7 @@ function allReset() {
     computerIcon.className = null;
     gameResult.innerText = null;
 }
+// 대입되었던 값 전부 null로 초기화.
 
 
 
@@ -120,4 +128,43 @@ function start(myChoice) {
 
     myScore.innerText = myGameScore;
     comScore.innerText = comGameScore;
+}
+
+//4. css조작
+
+/* 현재 버튼이 무엇인지에 따라 실행할 함수 고르는 로직 */
+function chooseMode(){
+    if (changeMode.innerText == "WhiteMode"){
+        setWhiteMode();
+    } else {
+        setDarkMode();
+    }
+}
+
+/* 다크모드 함수 */
+function setDarkMode(){
+    backColor.style.backgroundColor = "#000000";
+    backColor.style.color = "#FFFFFF";
+    reset.style.borderColor = "#FFFFFF";
+    reset.style.color = "#000000";
+    reset.style.backgroundColor = "#FFFFFF";
+    lineContents.style.borderColor = "#FFFFFF";
+    computerIcon.style.borderColor = "#FFFFFF";
+    lineTitle1.style.borderBottomColor = "#FFFFFF";
+    lineTitle2.style.borderBottomColor = "#FFFFFF";
+    changeMode.innerText = "WhiteMode";
+}
+
+/* 화이트모드 함수 */
+function setWhiteMode(){
+    backColor.style.backgroundColor = "#FFFFFF";
+    backColor.style.color = "#000000";
+    reset.style.borderColor = "#000000";
+    reset.style.color = "#FFFFFF";
+    reset.style.backgroundColor = "#000000";
+    lineContents.style.borderColor = "#000000";
+    computerIcon.style.borderColor = "#000000";
+    lineTitle1.style.borderBottomColor = "#000000";
+    lineTitle2.style.borderBottomColor = "#000000";
+    changeMode.innerText = "DarkMode";
 }

@@ -12,6 +12,7 @@ body {
 
   font-family: "Delicious Handrawn";
   font-size: 30px;
+  
 }
 
 button {
@@ -156,7 +157,16 @@ button {
     text-align: center;
 }
 
-#display-title {
+#display-title1 {
     width: 100px;
     text-align: center;
+}
+
+#display-title2 {
+  width: 100px;
+  text-align: center;
+}
+
+#darkMode{
+  margin-top:50px;
 }
