@@ -114,7 +114,7 @@ button {
 
 .fa-regular {
   border-radius: 50%;
-  border: black 4px solid;
+  border: rgb(0, 0, 0) 4px solid;
 }
 
 #my-hand-icon,

@@ -22,6 +22,9 @@ const changeMode = document.getElementById("darkMode"); // darkmode 버튼
 const lineContents = document.getElementById("contents-wrapper"); // 라인 색 바꾸기 위함
 const lineTitle1 = document.getElementById("display-title1"); // 라인 색 바꾸기 위함
 const lineTitle2 = document.getElementById("display-title2");
+const lineRockBtn = document.getElementById("rockBtn");
+const lineScissorsBtn = document.getElementById("scissorsBtn");
+const linePaperBtn = document.getElementById("paperBtn");
 
 //2. 선언한 dom 요소에 이벤트 생성
 
@@ -43,6 +46,8 @@ function allReset() {
     computerText.innerText = null;
     computerIcon.className = null;
     gameResult.innerText = null;
+    myGameScore = 0;
+    comGameScore = 0;
 }
 // 대입되었던 값 전부 null로 초기화.
 
@@ -153,6 +158,11 @@ function setDarkMode(){
     lineTitle1.style.borderBottomColor = "#FFFFFF";
     lineTitle2.style.borderBottomColor = "#FFFFFF";
     changeMode.innerText = "WhiteMode";
+    lineRockBtn.style.borderColor = "#FFFFFF";
+    lineScissorsBtn.style.borderColor = "#FFFFFF";
+    linePaperBtn.style.borderColor = "#FFFFFF";
+    
+    
 }
 
 /* 화이트모드 함수 */
@@ -167,4 +177,7 @@ function setWhiteMode(){
     lineTitle1.style.borderBottomColor = "#000000";
     lineTitle2.style.borderBottomColor = "#000000";
     changeMode.innerText = "DarkMode";
+    lineRockBtn.style.borderColor = "#000000";
+    lineScissorsBtn.style.borderColor = "#000000";
+    linePaperBtn.style.borderColor = "#000000";
 }
