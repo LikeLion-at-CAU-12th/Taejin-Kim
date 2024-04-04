@@ -11,6 +11,11 @@ const scissorsBtn = document.getElementById("scissors");
 const papaerBtn = document.getElementById("paper");
 
 const gameResult = document.getElementById("display-result"); // 게임결과 출력 위함
+const myScore = document.getElementById("my-score"); // 내 점수 표시 위함
+const comScore = document.getElementById("com-score"); // 컴퓨터 점수 표시 위함
+
+var myGameScore = 0; // 전역변수 내 점수 선언
+var comGameScore = 0; // 전역변수 컴퓨터 점수 선언
 
 //2. 선언한 dom 요소에 이벤트 생성
 
@@ -68,24 +73,36 @@ function start(myChoice) {
 
     /* 게임 플레이 로직 */
     let my = myHandText.innerText; // 내가 낸 것 my에 저장
-    let com = resultArray[0]; // com이 낸 것 com에 저장
+    let com = resultArray[0]; // 컴퓨터가 낸 것 com에 저장
 
     if (my == "rock" && com == "scissors") {
         gameResult.innerText = "win";
+        myGameScore++;
+        comGameScore--;
     } else if (my == "scissors" && com == "paper") {
         gameResult.innerText = "win";
+        myGameScore++;
+        comGameScore--;
     } else if (my == "paper" && com == "rock") {
         gameResult.innerText = "win";
+        myGameScore++;
+        comGameScore--;
     } else if (my == "rock" && com == "paper") {
         gameResult.innerText = "lose";
+        myGameScore--;
+        comGameScore++;
     } else if (my == "scissors" && com == "rock") {
         gameResult.innerText = "lose";
+        myGameScore--;
+        comGameScore++;
     } else if (my == "paper" && com == "scissors") {
         gameResult.innerText = "lose";
+        myGameScore--;
+        comGameScore++;
     } else {
         gameResult.innerText = "draw";
     }
-    
-    // console.log(my, com);
-    // console.log(gameResult.innerText); // 확인용
+
+    myScore.innerText = myGameScore;
+    comScore.innerText = comGameScore;
 }
