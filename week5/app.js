@@ -50,12 +50,10 @@ function allReset() {
     comGameScore = 0;
 }
 // 대입되었던 값 전부 null로 초기화.
-
-
-
 function displayMyChoice(e) {
     let clickedBtn = e.currentTarget.id; //rock, scissors, paper // 
     let clickedIcon = e.target.className;
+    console.log(e);
     //e.target.id는 rockbtn
     //e.target.classNamedms fa-regular fa-hand...
     //e.currentTarget.id는 rock
@@ -103,34 +101,32 @@ function start(myChoice) {
     let my = myHandText.innerText; // 내가 낸 것 my에 저장
     let com = resultArray[0]; // 컴퓨터가 낸 것 com에 저장
 
-    if (my == "rock" && com == "scissors") {
+    if ((my == "rock" && com == "scissors")||(my == "scissors" && com == "paper")||(my == "paper" && com == "rock")) {
         gameResult.innerText = "win";
-        myGameScore++;
-        comGameScore--;
-    } else if (my == "scissors" && com == "paper") {
-        gameResult.innerText = "win";
-        myGameScore++;
-        comGameScore--;
-    } else if (my == "paper" && com == "rock") {
-        gameResult.innerText = "win";
-        myGameScore++;
-        comGameScore--;
-    } else if (my == "rock" && com == "paper") {
+        changeScore();
+    } else if ((my == "rock" && com == "paper")||(my == "scissors" && com == "rock")||(my == "paper" && com == "scissors")) {
         gameResult.innerText = "lose";
-        myGameScore--;
-        comGameScore++;
-    } else if (my == "scissors" && com == "rock") {
-        gameResult.innerText = "lose";
-        myGameScore--;
-        comGameScore++;
-    } else if (my == "paper" && com == "scissors") {
-        gameResult.innerText = "lose";
-        myGameScore--;
-        comGameScore++;
+        changeScore();
     } else {
         gameResult.innerText = "draw";
     }
 
+    resultScore();
+}
+
+/* 스코어 변경 */
+function changeScore(){
+    if (gameResult.innerText == "win"){
+        myGameScore++;
+        comGameScore--;
+    } else {
+        myGameScore--;
+        comGameScore++;
+    }
+}
+
+/* 결과표시 */
+function resultScore() {
     myScore.innerText = myGameScore;
     comScore.innerText = comGameScore;
 }
