@@ -115,7 +115,8 @@ button{
 }
 .complete-btn{
     color: white;
-    background-color: #4d81b1;
+    /*background-color: #4d81b1;*/
+    width: 35px;
 }
 .complete-btn:hover{
     cursor: pointer;
@@ -124,7 +125,8 @@ button{
 
 .del-btn{
     color: white;
-    background-color: #5e5e5e;
+    /*background-color: #5e5e5e;*/
+    width: 35px;
 }
 .del-btn:hover{
     cursor: pointer;
@@ -137,7 +139,8 @@ button{
 }
 
 .done-btn{
-    background-color: #5e5e5e;
+    /*background-color: #5e5e5e;*/
+    width: 8%;
 }
 
 

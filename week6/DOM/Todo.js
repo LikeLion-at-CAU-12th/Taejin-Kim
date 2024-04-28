@@ -1,12 +1,23 @@
 import Button from "./Button.js";
 import Div from "./Div.js";
+import ButtonIMG from "./ButtonIMG.js";
+
+var IMGback = new Image()
+IMGback.src = './back.png';
+
+var IMGcheck = new Image();
+IMGcheck.src = './check.png';
+
+var IMGdelete = new Image();
+IMGdelete.src = './delete.png';
+
 
 class Todo{
     constructor(todo){
         this.row = new Div('', 'row').node; // div태그 생성하는 과정
         this.textBox = new Div(todo, 'text-box');
-        this.completeBtn = new Button('완료', 'complete-btn');
-        this.delBtn = new Button('삭제', 'del-btn');
+        this.completeBtn = new ButtonIMG(IMGcheck.src, 'complete-btn');
+        this.delBtn = new ButtonIMG(IMGdelete.src, 'del-btn');
     }
     addRow(){
         [this.textBox, this.completeBtn, this.delBtn].forEach((dom) => {
