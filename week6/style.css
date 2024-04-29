@@ -139,8 +139,13 @@ button{
 }
 
 .done-btn{
-    /*background-color: #5e5e5e;*/
-    width: 8%;
+    color: white;
+    /*background-color: #4d81b1;*/
+    width: 35px;
 }
 
+.done-btn:hover{
+    cursor: pointer;
+    background-color: #c4e2ff;
+}
 

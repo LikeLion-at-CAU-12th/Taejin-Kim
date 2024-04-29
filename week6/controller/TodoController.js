@@ -6,14 +6,26 @@ class TodoController {
     constructor(todo){
         this.newTodo = new Todo(todo);
         this.delBtnNode = this.newTodo.getDelBtn();
+        this.delBtnNode2 = this.newTodo.getDelBtn2();
         this.comBtnNode = this.newTodo.getCompleteBtn();
+        this.backBtnNode = this.newTodo.getBackBtn();
         this.innerNode = this.newTodo.getInnerText();
 
         this.delBtnNode.addEventListener('click', ()=>{
             this.delTodo();
         });
+        this.delBtnNode2.addEventListener('click', ()=>{
+            this.delTodo2();
+        });
         this.comBtnNode.addEventListener('click', ()=>{
-            this.doneTodo();
+            this.delTodo();
+            this.addComplete();
+
+        });
+        this.backBtnNode.addEventListener('click', ()=>{
+            this.delComplete();
+            this.addTodo();
+
         });
     }
 
@@ -23,10 +35,31 @@ class TodoController {
         todoList.appendChild(this.newTodo.addRow());
         input.value = ''; //value값을 비워준다는 의미.
     }
+
+    addComplete(){ 
+        const todoList = document.getElementById("complete-list");
+        const input = document.querySelector('input');
+        todoList.appendChild(this.newTodo.addRowComplete());
+        input.value = ''; //value값을 비워준다는 의미.
+    }
+
+
     delTodo(){
         const todoList = document.getElementById("to-do-list");
         todoList.removeChild(this.newTodo.getRow());
     }
+
+    delTodo2(){
+        const todoList = document.getElementById("complete-list");
+        todoList.removeChild(this.newTodo.getRow2());
+    }
+
+    delComplete(){
+        const todoList = document.getElementById("complete-list");
+        todoList.removeChild(this.newTodo.getRow2());
+    }
+
+
     doneTodo(){
         this.innerNode.classList.toggle('done-text');
         this.comBtnNode.classList.toggle('done-btn');
