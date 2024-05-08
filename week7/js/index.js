@@ -63,7 +63,7 @@ async function getData(){
 // 더보기 누르면 실행 될 함수
 function openMoreInfo(){
   let num = (Number(event.target.id))%5;
-  window.open(`moreInfo0.html?${num}`);
+  window.open(`moreInfo0.html?num=${num}`);
   
   console.log(num);
 }

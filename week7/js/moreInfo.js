@@ -34,5 +34,8 @@ function parsing(str) {
     return result[1]+'/'+result[2]+'/'+result[3];
 }
 
-const receivedData = location.href.split('?')[1]; // location객체는 현재 페이지 // .href로 현재 페이지 url 가져옴.
+//const receivedData = location.href.split('?')[1]; // location객체는 현재 페이지 // .href로 현재 페이지 url 가져옴.
+
+const urlParams = new URLSearchParams(window.location.search);
+const receivedData = urlParams.get('num');
 moreData(receivedData); // 바로실행
