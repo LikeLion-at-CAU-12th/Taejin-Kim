@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { filterType } from '../../constants/filtertype'
-import { getGenderUser, getPerPage } from '../../apis/userlist'
+import { getGenderUser, getPerPage, getPartUser } from '../../apis/userlist'
 
 
 //얘가 api 호출함
@@ -25,7 +25,15 @@ const UserFilter = ({setFilter, setUserData, setCurPage}) => {
 
             // 현재 페이지를 초기화하는 로직 - 현재 페이지를 1로 초기화해줌
             setCurPage(1);
+        } else if (type === "part"){
+            const response = await getPartUser(param);
+            setUserData(response);
+            console.log(response);
+
+            setCurPage(1);
         }
+
+
         setFilter(param); //다른 값으로도 변경 가능~  // 색상 변경 할때 이거 이용하기.
     }
   return (
