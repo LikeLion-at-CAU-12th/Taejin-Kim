@@ -6,7 +6,7 @@ import { getGenderUser, getPerPage, getPartUser } from '../../apis/userlist'
 
 //얘가 api 호출함
 // {} 언에 있는 것들이 각각의 props
-const UserFilter = ({setFilter, setUserData, setCurPage}) => {
+const UserFilter = ({filter ,setFilter, setUserData, setCurPage}) => {
     // 필터 각각에 대해 param이 존재.
     // 따라서 type, param을 전달해줌
     const handleClick = async(type, param) => {
@@ -46,7 +46,10 @@ const UserFilter = ({setFilter, setUserData, setCurPage}) => {
         (data, idx) => 
         <FilterBox
         key={idx}
-        onClick={() => handleClick(data.type, data.param)}>{data.title}</FilterBox>
+        $active={data.param === filter ? true:false}
+        onClick={() => handleClick(data.type, data.param)}>
+            {data.title}
+        </FilterBox>
     )}</FilterLayout>
   )
 }
@@ -75,7 +78,8 @@ const FilterLayout = styled.div`
 const FilterBox = styled.div`
     display: flex;
     padding: 1rem 4rem 1rem 4rem;
-    background-color: "#C9C9C9";
+    background-color: rgba(255,179,122,1);
+    background-color: ${(props) => props.$active ? "rgba(255,179,122,1)" : "#C9C9C9"};
     border-radius: 1rem;
     font-size: 3rem;
     // 크기를 옆으로 줄일때 강제 줄바꿈 안되도록 제한하는 것 - white-space

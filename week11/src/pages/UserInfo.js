@@ -11,7 +11,7 @@ const UserInfo = () => {
     const [userData, setUserData] = useState([]);
     // 페이지 정보를 넘기는 것.
     const [curPage, setCurPage] = useState(); //initial value === undefined // 초기값을 지정안했음
-    const [filter, setFilter] = useState("all"); //색상 넣을 때 얘 이용하세요~
+    const [filter, setFilter] = useState(); //색상 넣을 때 얘 이용하세요~
   return (
     //부모태그는 항상 Layout
     //<h1>은 자식 태그
@@ -23,6 +23,7 @@ const UserInfo = () => {
         <ContentBox>
             <UserFilter 
             setFilter={setFilter}
+            filter={filter}
             setUserData={setUserData}
             setCurPage={setCurPage} />
             <UserSection userData={userData} />
