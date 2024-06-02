@@ -12,16 +12,14 @@ const UserFilter = ({filter ,setFilter, setUserData, setCurPage}) => {
     const handleClick = async(type, param) => {
         if(type === "all"){
             //response가 axios이니까 await 써줘야 함 - 따라서 async를 꼭 써줘야 함(한 쌍임) -> 이 결과로 위에 async(type, param) 이렇게 된 것.
-            const response = await getPerPage(1);
+            const response = await getPerPage();
             //response값을 저장하기 위해서 새로운 상태(state)가 필요하다!
             //useState를 이용해서 이 값을 저장해주도록 합시다~~
-            setUserData(response);
-            // console.log(response);
+            setUserData(response.slice(0,5));
             setCurPage(1);
         } else if (type === "gender"){
             const response = await getGenderUser(param);
             setUserData(response);
-            // console.log(response);
 
             // 현재 페이지를 초기화하는 로직 - 현재 페이지를 1로 초기화해줌
             setCurPage(1);

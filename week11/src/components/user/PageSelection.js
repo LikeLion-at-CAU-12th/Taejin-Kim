@@ -4,8 +4,13 @@ import { getPerPage } from '../../apis/userlist'
 
 const PageSelection = ({curPage, setUserData, setCurPage}) => {
     const handleClick = async(page) => {
-        const response = await getPerPage(page); // handleClick으로 받은 인수(페이지 넘버)에 따라 getPerPage에서 받아오는 페이지 정보가 달라야 하므로 변수로 넣음.
-        setUserData(response);
+        const response = await getPerPage(); // 필수과제3관련
+        const offset = 5;
+        const end = page*offset// 2page에는 6-10
+        console.log(page);
+        console.log(response);
+
+        setUserData(response.slice(end-5,end));
         setCurPage(page);
     }
   return (
