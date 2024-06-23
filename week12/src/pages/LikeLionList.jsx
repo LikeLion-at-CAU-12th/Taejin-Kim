@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+import ChoiceBox from '../components/ChoiceBox';
 
 const LikeLionList = () => {
     const [testList, setTestList] = useState([]);
+    const [clickedChoices, setClickedChoice] = useState({});
     const navigate = useNavigate();
     const baseURL = "https://gominzipsession.o-r.kr"
 
@@ -23,6 +25,12 @@ const LikeLionList = () => {
         fetchTestList();
     },[]);
 
+    const handleClickedChoice = (questionId, choiceIdx) => 
+        {setClickedChoice((clickedChoices) => 
+            ({...clickedChoices, [questionId]:choiceIdx}));
+        }
+        console.log(clickedChoices);
+
   return (
     <MenuDom>
         <BookListDom>
@@ -35,7 +43,10 @@ const LikeLionList = () => {
             <SemiTitle>{test.question}</SemiTitle>
             <ChoiceBoxes>
             {test.choices.map((choice, idx)=>(
-               <ChoiceBox> {choice}</ChoiceBox>
+               <ChoiceBox key = {idx} content = {choice}
+               $active = {clickedChoices[test.id] === idx}
+               onClick = {() => handleClickedChoice(test.id, idx)}>
+               </ChoiceBox>
             ))}
             </ChoiceBoxes>
             </div>
@@ -92,22 +103,6 @@ const BookDetailDom = styled.div`
   height: 100%;
   border-radius: 0 10px 10px 0;
   margin-top: 100px;
-`;
-
-const ChoiceBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 30px;
-  font-size: 13px;
-  color: #4a4a4a;
-  background-color: #b8edfb;
-  border-radius: 20px;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 500;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
 const ChoiceBoxes = styled.div`
