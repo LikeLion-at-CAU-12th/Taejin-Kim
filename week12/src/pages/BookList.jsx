@@ -57,6 +57,7 @@ const Title = styled.div`
   font-size: 40px;
   color: #535353;
   font-weight: 700;
+  margin-bottom: 15px;
 `;
 
 const BookListDom = styled.div`

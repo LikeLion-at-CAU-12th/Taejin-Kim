@@ -17,6 +17,8 @@ const LikeLionList = () => {
         const fetchTestList = async()=>{
             const response = await axios.get(url);
             console.log(response.data);
+            console.log(response.data.questions)
+            setTestList(response.data.questions)
         };
         fetchTestList();
     },[]);
@@ -26,12 +28,20 @@ const LikeLionList = () => {
         <BookListDom>
             <Title onClick={goToHome}>홈으로</Title>
            <Title>멋사인 테스트</Title>
-       
         </BookListDom>
         <BookDetailDom>
+          {testList.map((test, idx)=>(
+            <div key = {test.id}>
+            <SemiTitle>{test.question}</SemiTitle>
+            <ChoiceBoxes>
+            {test.choices.map((choice, idx)=>(
+               <ChoiceBox> {choice}</ChoiceBox>
+            ))}
+            </ChoiceBoxes>
+            </div>
+          ))}
            <Outlet /> 
         </BookDetailDom>
-        
     </MenuDom>
   )
 }
@@ -52,6 +62,14 @@ const Title = styled.div`
   font-size: 40px;
   color: #535353;
   font-weight: 700;
+  margin-bottom:15px;
+`;
+
+const SemiTitle = styled.div`
+    font-size:20px;
+    color: #535353;
+    font-weight:700;
+    margin: 20px;
 `;
 
 const BookListDom = styled.div`
@@ -74,4 +92,28 @@ const BookDetailDom = styled.div`
   height: 100%;
   border-radius: 0 10px 10px 0;
   margin-top: 100px;
+`;
+
+const ChoiceBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  font-size: 13px;
+  color: #4a4a4a;
+  background-color: #b8edfb;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const ChoiceBoxes = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 `;
