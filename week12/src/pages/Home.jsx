@@ -9,7 +9,7 @@ const Home = () => {
         <StyledLink to = "/books">
             Book List
         </StyledLink>
-        <StyledLink to = "/likelionlist">
+        <StyledLink to = "/likelionlist/likelionQ">
             멋사인 테스트
         </StyledLink>
     </MenuDom>
@@ -17,7 +17,7 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
 
 const MenuDom = styled.div`
   display: flex;

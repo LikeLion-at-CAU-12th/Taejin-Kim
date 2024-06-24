@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import LikeLionList from './pages/LikeLionList';
+import LikeLionQ from './pages/LikeLionQ';
 import BookList from './pages/BookList';
 import BookDetail from './pages/BookDetail';
 
@@ -11,8 +12,9 @@ function App() {
     <AppDom>
       <Routes>
         <Route path = "/" element = {<Home />}/>
+
         <Route path = "/likeLionList" element={<LikeLionList/>}>
-        
+        <Route path = ":likelionQ" element={<LikeLionQ />} />
         </Route>
         <Route path = "/books" element={<BookList/>}>
           <Route path = ":id" element={<BookDetail />} />
