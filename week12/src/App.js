@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import LikeLionList from './pages/LikeLionList';
 import LikeLionQ from './pages/LikeLionQ';
+import LikeLionR from './pages/LikeLionR';
 import BookList from './pages/BookList';
 import BookDetail from './pages/BookDetail';
 
@@ -15,7 +16,9 @@ function App() {
 
         <Route path = "/likeLionList" element={<LikeLionList/>}>
         <Route path = ":likelionQ" element={<LikeLionQ />} />
+        <Route path = ":likelionR/:num" element={<LikeLionR />} />
         </Route>
+
         <Route path = "/books" element={<BookList/>}>
           <Route path = ":id" element={<BookDetail />} />
         </Route>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 
 const LikeLionList = () => {
@@ -35,9 +35,12 @@ const LikeLionList = () => {
         <LikeLionListDom>
             <Title onClick={goToHome}>홈으로</Title>
            <Title>멋사인 테스트</Title>
-           
         </LikeLionListDom>
+
+
+        <LikeLionQDom>
             <Outlet context = {{ testList, clickedChoices, handleClickedChoice}}/>
+        </LikeLionQDom>  
     </MenuDom>
   )
 }
@@ -59,6 +62,10 @@ const Title = styled.div`
   color: #535353;
   font-weight: 700;
   margin-bottom:15px;
+  &:hover{
+        cursor: pointer;
+        font-size:50px;
+    }
 `;
 
 const LikeLionListDom = styled.div`
@@ -70,4 +77,10 @@ const LikeLionListDom = styled.div`
   height: 80%;
   border-radius: 0 10px 10px 0;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const LikeLionQDom = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 `;

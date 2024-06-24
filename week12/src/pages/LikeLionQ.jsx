@@ -26,9 +26,8 @@ const LikeLionQ = () => {
     </ChoiceBoxes>
     </div>
   ))}
-   
-   <SubmitButton clickedChoices={clickedChoices} >
-   </SubmitButton>
+  <SubmitButton clickedChoices={clickedChoices} to = {"/likelionlist"} >
+  </SubmitButton>
    </LikeLionQDom>
     </div>
     )
@@ -48,6 +47,7 @@ const ChoiceBoxes = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
     gap: 10px;
 `;
 
@@ -56,7 +56,7 @@ const LikeLionQDom = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding: 50px;
+  padding: 20px;
   height: 100%;
   border-radius: 0 10px 10px 0;
   margin-top: 100px;

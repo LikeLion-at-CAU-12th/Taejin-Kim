@@ -58,6 +58,10 @@ const Title = styled.div`
   color: #535353;
   font-weight: 700;
   margin-bottom: 15px;
+  &:hover{
+        cursor: pointer;
+        font-size:50px;
+    }
 `;
 
 const BookListDom = styled.div`
