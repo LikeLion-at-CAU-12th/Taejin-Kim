@@ -22,3 +22,8 @@ export const Title = styled.div`
   font-size: 30px;
   margin: 20px;
 `;
+
+export const SubTitle = styled.div`
+  font-size: 15px;
+  margin: 20px;
+`

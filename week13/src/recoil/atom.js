@@ -14,3 +14,8 @@ export const isSubmitedAtom = atom({
     key: 'isSubmited',
     default: false,
 });
+
+export const genderAtom = atom({
+    key: 'gender',
+    default: '선택하지 않음',
+})
