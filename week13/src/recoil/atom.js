@@ -19,3 +19,8 @@ export const genderAtom = atom({
     key: 'gender',
     default: '선택하지 않음',
 })
+
+export const modalAtom = atom({
+    key: 'modal',
+    default: false,
+})

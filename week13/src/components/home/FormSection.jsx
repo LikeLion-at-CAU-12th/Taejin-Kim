@@ -2,19 +2,17 @@ import React, { useContext } from 'react'
 import { Button, Wrapper } from '../layout/common'
 import { Form } from './Form'
 import { ThemeColorContext } from '../../context/context'
-import { useNavigate } from 'react-router-dom'
-import { useSetRecoilState } from 'recoil'
-import { isSubmitedAtom } from '../../recoil/atom'
 import styled from 'styled-components';
+import Modal from '../../modal/Modal'
+import { useRecoilState } from 'recoil';
+import { modalAtom } from '../../recoil/atom';
 
 const FormSection = () => {
     const mode = useContext(ThemeColorContext);
-    const navigate = useNavigate();
-    const setIsSubmited = useSetRecoilState(isSubmitedAtom);
+    const [modal, setModal] = useRecoilState(modalAtom);
 
     const handleBtn = ()=>{
-        navigate("/mypage");
-        setIsSubmited(true);
+        setModal(true);
     }
 
     const handleRadio = (e)=>{
@@ -42,6 +40,9 @@ const FormSection = () => {
         </StyledRadio>
         
         <Button mode = {mode.button} onClick={handleBtn}>제출</Button>
+        {modal && (
+          <Modal />
+        )}
     </Wrapper>
   )
 }

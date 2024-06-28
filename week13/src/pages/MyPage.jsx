@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useRecoilValue, useResetRecoilState } from 'recoil';
-import { emailAtom, genderAtom, isSubmitedAtom, userNameAtom } from '../recoil/atom';
+import { emailAtom, genderAtom, isSubmitedAtom, modalAtom, userNameAtom } from '../recoil/atom';
 import { Button, SubTitle, Title, Wrapper } from '../components/layout/common';
 import { ThemeColorContext } from '../context/context';
 import { useNavigate } from 'react-router-dom';
@@ -15,12 +15,14 @@ export const MyPage = () => {
     const resetEmail = useResetRecoilState(emailAtom);
     const reset = useResetRecoilState(isSubmitedAtom);
     const resetGender = useResetRecoilState(genderAtom);
+    const resetModal = useResetRecoilState(modalAtom);
     
     const handleReset = ()=>{
         resetUserName();
         resetEmail();
         reset();
         resetGender();
+        resetModal();
         navigate("/");
     }
 
