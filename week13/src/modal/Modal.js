@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components'
 import { isSubmitedAtom, modalAtom } from '../recoil/atom';
+import { ThemeColorContext } from '../context/context';
 
 const Modal = () => {
     const navigate = useNavigate();
     const setIsSubmited = useSetRecoilState(isSubmitedAtom);
     const [modal, setModal] = useRecoilState(modalAtom);
+    const mode = useContext(ThemeColorContext);
 
     const handleBtn = ()=>{
         setIsSubmited(true);
@@ -20,7 +22,7 @@ const Modal = () => {
 
   return (
     <ModalBackground>
-        <Container>
+        <Container mode = {mode.sub}>
         <div>Modal</div>
         <button onClick={handleBtn}>확인</button>
         <button onClick={handleCloseBtn} >닫기</button>
@@ -45,7 +47,7 @@ const ModalBackground = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: skyblue;
+  background-color: ${(props) => props.mode};
   width: 70%;
   height: 70%;
   display: flex;

@@ -41,7 +41,8 @@ const FormSection = () => {
         
         <Button mode = {mode.button} onClick={handleBtn}>제출</Button>
         {modal && (
-          <Modal />
+           <Modal />
+          
         )}
     </Wrapper>
   )
