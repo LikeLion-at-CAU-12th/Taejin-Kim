@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components'
-import { isSubmitedAtom, modalAtom } from '../recoil/atom';
+import { emailAtom, genderAtom, isSubmitedAtom, modalAtom, userNameAtom } from '../recoil/atom';
 import { ThemeColorContext } from '../context/context';
+import { Title } from '../components/layout/common';
 
 const Modal = () => {
     const navigate = useNavigate();
     const setIsSubmited = useSetRecoilState(isSubmitedAtom);
     const [modal, setModal] = useRecoilState(modalAtom);
     const mode = useContext(ThemeColorContext);
+    const userName = useRecoilValue(userNameAtom);
+    const email = useRecoilValue(emailAtom);
+    const gender = useRecoilValue(genderAtom);
 
     const handleBtn = ()=>{
         setIsSubmited(true);
@@ -23,7 +27,12 @@ const Modal = () => {
   return (
     <ModalBackground>
         <Container mode = {mode.sub}>
-        <div>Modal</div>
+        <Title>입력값을 확인해주세요</Title>
+        <br></br>
+        <div>이름 : {userName}</div>
+        <div>E-mail : {email}</div>
+        <div>성별 : {gender}</div>
+
         <button onClick={handleBtn}>확인</button>
         <button onClick={handleCloseBtn} >닫기</button>
         </Container>
