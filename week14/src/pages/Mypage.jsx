@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getMyPage } from "../apis/user";
+import { useCheckLogin } from "../isLogin/isLogin";
+import { useNavigate } from "react-router-dom";
 
 const Mypage = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
+  const router = useNavigate();
+  const checkLogin = useCheckLogin();
 
   useEffect(() => {
     getMyPage(localStorage.getItem("access"))
@@ -13,7 +17,9 @@ const Mypage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        alert("토큰 기한 만료");
+        alert("access 토큰 기한 만료");
+        localStorage.removeItem("access")
+
       });
   }, []);
 
@@ -22,6 +28,8 @@ const Mypage = () => {
   const onClick = () =>{
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
+    checkLogin();
+    router("/");
   }
 
   return (

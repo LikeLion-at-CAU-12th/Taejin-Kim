@@ -28,6 +28,7 @@ export const getMyPage = async (token) => {
 };
 
 export const getNewRefreshToken = async () => {
+
   try {
     const accessToken = localStorage.getItem("access");
     const refreshToken = localStorage.getItem("refresh");
@@ -47,5 +48,8 @@ export const getNewRefreshToken = async () => {
   } catch (error) {
     // 토큰이 만료되었을 경우
     alert("토큰이 만료되었습니다. 다시 로그인해주세요.");
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+
   }
 };

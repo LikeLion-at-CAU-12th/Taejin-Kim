@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useForm } from "../hooks/useForm";
 import { login } from "../apis/user";
+import { useCheckLogin } from "../isLogin/isLogin";
+import { useRecoilValue } from "recoil";
+import { loginAtom } from "../recoil/atom";
 
 const Home = () => {
   const [id, onChangeId] = useForm();
   const [pw, onChangePw] = useForm();
+  const checkLogin = useCheckLogin();
 
   const router = useNavigate();
+  const isLogin = useRecoilValue(loginAtom);
+
+  useEffect(() => {
+    checkLogin();
+  }, [checkLogin]);
+  
+  useEffect(() => {
+    if (isLogin) {
+      router("/mypage");
+    }
+  }, [isLogin, router]);
+
+  
+
+  
 
   const onClick = async () => {
     try {
       const result = await login(id, pw);
       localStorage.setItem("access", result.accessToken);
       localStorage.setItem("refresh", result.refreshToken);
+
+      checkLogin();
+
       router("/mypage");
     } catch (error) {
       alert("id나 pw를 확인하세요");
