@@ -19,11 +19,19 @@ const Mypage = () => {
 
   if (loading) return <div>로딩중입니당....</div>;
 
+  const onClick = () =>{
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+  }
+
   return (
     <Wrapper>
       <Title>회원 정보</Title>
       <div>회원님 성함: {data.name}</div>
       <div>회원님 나이: {data.age}</div>
+      <BtnWrapper>
+      <button onClick={onClick}>로그아웃</button>
+      </BtnWrapper>
     </Wrapper>
   );
 };
@@ -55,4 +63,32 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 800;
   line-height: normal;
+`;
+
+const BtnWrapper = styled.div`
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  button {
+    font-weight: 800;
+    background-color: #89cdf6;
+    color: white;
+    padding: 19px;
+    border-radius: 10px;
+    border: none;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 3px 3px skyblue;
+      color: black;
+      background-color: white;
+    }
+  }
 `;
