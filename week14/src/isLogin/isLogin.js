@@ -12,7 +12,6 @@ export const useCheckLogin  = ()=>{
     } else {
         setLogin(false);
     }
-    console.log(isLogin);
     };
 
     return checkLogin;

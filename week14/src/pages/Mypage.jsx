@@ -17,8 +17,9 @@ const Mypage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        alert("access 토큰 기한 만료");
         localStorage.removeItem("access")
+        localStorage.removeItem("refresh")
+        router("/")
 
       });
   }, []);
