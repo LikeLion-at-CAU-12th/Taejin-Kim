@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useForm } from "../hooks/useForm";
 import { login } from "../apis/user";
 import { useCheckLogin } from "../isLogin/isLogin";
-import { useRecoilValue } from "recoil";
-import { loginAtom } from "../recoil/atom";
 
 const Home = () => {
   const [id, onChangeId] = useForm();
@@ -13,17 +11,8 @@ const Home = () => {
   const checkLogin = useCheckLogin();
 
   const router = useNavigate();
-  const isLogin = useRecoilValue(loginAtom);
 
-  useEffect(() => {
-    checkLogin();
-  }, [checkLogin]);
   
-  useEffect(() => {
-    if (isLogin) {
-      router("/mypage");
-    }
-  }, [isLogin, router]);
 
   const onClick = async () => {
     try {
@@ -33,7 +22,7 @@ const Home = () => {
 
       checkLogin();
 
-      router("/mypage");
+      router("/");
     } catch (error) {
       alert("id나 pw를 확인하세요");
     }
@@ -58,6 +47,7 @@ const Home = () => {
         </Form>
         <BtnWrapper>
           <SignupLink to="/signup">회원가입</SignupLink>
+          <SignupLink to="/">홈으로</SignupLink>
           <button onClick={onClick}>로그인</button>
         </BtnWrapper>
       </Wrapper>
