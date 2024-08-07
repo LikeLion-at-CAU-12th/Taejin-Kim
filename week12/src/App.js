@@ -7,12 +7,17 @@ import LikeLionQ from './pages/LikeLionQ';
 import LikeLionR from './pages/LikeLionR';
 import BookList from './pages/BookList';
 import BookDetail from './pages/BookDetail';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() { 
   return (
     <AppDom>
       <Routes>
         <Route path = "/" element = {<Home />}/>
+
+        <Route path = "/login" element={<Login/>}></Route>
+        <Route path = "/signup" element={<Signup/>}></Route>
 
         <Route path = "/likeLionList" element={<LikeLionList/>}>
         <Route path = ":likelionQ" element={<LikeLionQ />} />
